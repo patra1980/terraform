@@ -82,6 +82,14 @@ resource "aws_route_table_association" "ibm-pvt-assc" {
   route_table_id = aws_route_table.ibm-pvt-rtb.id
 }
 
+resource "aws_instance" "web" {
+  ami           = "ami-0aeeebd8d2ab47354"
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.ibm-pub.id
+  key_name      = "vir"
+  tags = {
+    Name = "TF Instance"
+  }
 
 
 
